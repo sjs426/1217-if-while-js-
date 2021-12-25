@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="firstNumber" 
+    onClick="alert(firstNumber);">
+    <input type="button" value="secondNumber" 
+    onClick="alert(secondNumber);">
+
+    <script>
+        let firstNumber;
+        let secondNumber;
+
+        firstNumber = window.prompt("Enter first integer");
+        secondNumber = window.prompt("Enter seocnd integer");
+        if(firstNumber > secondNumber) {
+            document.body.style.backgroundColor = 'lightblue' ; 
+            document.write(firstNumber+">"+secondNumber);
+        } else if (firstNumber == secondNumber) { // = must be two otherwise error occurs
+            document.body.style.backgroundColor = 'lightyellow'
+            document.write(firstNumber+"=="+secondNumber);
+        }
+        else { 
+            document.body.style.backgroundColor = 'pink'
+            document.write(firstNumber+"<"+secondNumber);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="overall">
+        <b>JS Calculator</b><br>
+
+        Number1<br>
+        <input id="input1" type="number"><br>
+
+        Number 2<br>
+        <input id="input2" type="number"><br>
+
+        Operate way?<br>
+        <select id="selection">
+            <!-- Operators here are just for display to people.  So, we must use 'value' when it comes to JS -->
+            <option value="1">+</option>
+            <option value="2">-</option>
+            <option value="3">*</option>
+            <option value="4">/</option>
+        </select><br>
+
+        <input id="AddButton" type="button" value="Add"><br>
+
+        <p id="output">Return</p>
+    </div>
+
+        <script>
+            let AddButton = document.getElementById("AddButton");
+
+            console.log(typeof (selection));
+            console.log(selection);
+
+            function plus(input1, input2) {
+                return input1 + input2;
+            }
+
+            function minus(input1, input2) {
+                return input1 - input2;
+            }
+            function multiple(input1, input2) {
+                return input1 * input2;
+            }
+            function divide(input1, input2) {
+                return input1 / input2;
+            }
+
+            // the difference between return and print is 
+            // print is for display to users while return is let the function work.
+            // actually no need these functions above. I can make 
+            // let a = input1 + input2 this way
+
+            AddButton.addEventListener("click", function () {
+                let input1 = parseInt(document.getElementById("input1").value);
+                let input2 = parseInt(document.getElementById("input2").value);
+                let selection = parseInt(document.getElementById("selection").value);
+
+                // the problem was let selection. It should be under this AddButton. 
+                // If it is located outside, it only applies one time for + value. so it didn't work for other operators.
+                console.log(typeof (selection));
+                console.log(selection);
+
+                let a = plus(input1, input2);
+                let b = minus(input1, input2);
+                let c = multiple(input1, input2);
+                let d = divide(input1, input2);
+
+
+                console.log(typeof (a));
+
+
+                if (selection == 1) {
+                    document.getElementById("output").innerHTML = "Result = " + a;
+                }
+                else if (selection == 2) {
+                    document.getElementById("output").innerHTML = "Result = " + b;
+                }
+                else if (selection == 3) {
+                    document.getElementById("output").innerHTML = "Result = " + c;
+                }
+                else {
+                    document.getElementById("output").innerHTML = "Result = " + d;
+                }
+
+            })
+
+        </script>
+
+        <!-- Tip
+            1. if i click the button, it goes to another page
+            => docuement.write changes the page. so I must usee .innerHTML!
+
+            2. With console.log(variable), I can check the datatype of the variable written inside ().
+            => I should put code here and check via F12. In console tap, it will appear  
+        -->
+
+</body>
+
+</html>

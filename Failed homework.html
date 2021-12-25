@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./homework/style.css"> 
+</head>
+
+<body>
+    <div id="Title">
+        <h2>Guessing Game</h2>
+        <form>
+        <label>Your Guess(1 ~ 100)</label><br>
+        <input id=user_input type="number"><br>
+        </form>
+
+        <input id="AddButton" type="button" value="play" onclick="Result()"><br>
+        
+        <table>
+            <tr>
+                <th>   Result
+                    <p id="Result"></p>
+                </th>
+            </tr>
+
+        </table>
+     
+    </div>
+
+    <script>
+        let Ran_number = Math.floor(1 + Math.random() * 100);
+        let Result = document.getElementById("Result");
+
+        console.log('user',user_input,"user2");
+        
+
+        window.addEventListener("load", start);
+   
+        function start() {
+            var button = document.getElementById("AddButton");
+            button.addEventListener("click", Show_Result);
+        }
+         
+        function Show_Result() {
+            let user_input = document.getElementById("user_input").value;
+// lab 이랑 homework 문제는 여기 let 을 function 안에다가 넣었어야 했다. 그래야 작동한다. 밖에 있다면 이 것은 한 번만 로드 돼서 바뀌지 않음!
+            if (Ran_number == user_input) {
+                window.alert("congrats");
+            } else {
+                window.alert("wrong");
+                document.getElementById("Result").innerHTML = user_input;
+            }
+        }
+
+
+    </script>
+    <!-- 
+        1. = , ==, === 차이. 당연히 = 하나를 같다고 하면 TURE임 assign 하는 거니까
+
+               document.body.onload = addElement;
+                function addElement() {
+                    // create a new div element
+                    const newdiv = document.createElement("div");
+
+                    // and give it some content
+                    const newContent = document.createTextNode("Do it again");
+
+                    // add the text node to the newly created div
+                    newdiv.appendChild(newContent);
+
+                    // add the newly created element and its content into the DOM
+                    const currentDiv = document.getElementById("Cspan");
+                    document.body.insertBefore(newSpan, currentDiv);
+                -->
+</body>
+
+</html>

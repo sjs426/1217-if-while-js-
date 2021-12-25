@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="Title">
+        <h1>Guessing Game</h1>
+        
+        <form>
+            <label>Your Guess(1 ~ 100)</label><br>
+            <input id=user_input type="number">
+        </form>
+
+        <input id="AddButton" type="button" value="play" onclick="Result()">
+
+        <table id="table">
+            <tr> 
+                <th>
+                    Result
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let Ran_number = Math.floor(1 + Math.random() * 100); // generate random no. floor => skip 소수점이하
+        let min = 1;   // default lower bound
+        let max = 100; // default upper bound
+
+        function Result() {
+            let user_input = parseInt(document.getElementById("user_input").value);
+
+            if (user_input == Ran_number) {
+                alert("Bravo. Bingo!");
+                location.reload(); // after result, if we want to refresh the page, we should use this code
+            }
+
+            while (user_input != Ran_number) {
+                if (user_input > Ran_number) { //let's say 50 & 10 
+                    if (user_input < max) { // if 안에 if 가능.
+                        max = user_input;
+                    }
+                }
+                if (user_input < Ran_number) { // let's say 10 & 50
+                    if (user_input > min) {
+                        min = user_input;
+                    }
+                }
+            
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+                let text = document.createTextNode(min + "~" + max);
+                td.appendChild(text); // set variables and append it foward order. td 안에 있는 text
+                tr.appendChild(td); // tr 안에 있는 td 
+                document.getElementById("table").appendChild(tr); // table 안에 있는 tr
+                break; // while 이 true 가 아니더라고 break 하게 해주는 역할
+            }
+        }
+
+    </script>
+    <!-- 
+        = , ==, === 차이. 당연히 = 하나를 같다고 하면 TURE임 assign 하는 거니까
+        tr 은 row / th,td 는 column 
+        appendChild는 안에다가 집어넣는 것.
+                -->
+</body>
+
+</html>
